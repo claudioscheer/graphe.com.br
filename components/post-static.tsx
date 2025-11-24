@@ -34,7 +34,7 @@ export default function PostStatic({
             <span>·</span>
             <Link
               href={`/autor/${authorId}`}
-              className="text-[#2E6BE6] hover:underline"
+              className="text-[#555555] hover:underline"
             >
               {authorName}
             </Link>

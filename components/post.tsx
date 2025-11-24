@@ -1,10 +1,8 @@
-"use client"
-
-import { useEffect, useState } from "react"
 import Link from "next/link"
 import Layout from "./layout"
 import MarkdownRenderer from "./markdown-renderer"
 import { posts } from "@/lib/data"
+import postsData from "@/lib/posts.json"
 
 interface PostProps {
   id: string
@@ -22,30 +20,9 @@ interface PostMetadata {
 }
 
 export default function Post({ id }: PostProps) {
-  const [postMetadata, setPostMetadata] = useState<PostMetadata | null>(null)
-  const [loading, setLoading] = useState(true)
   const postContent = posts.find(p => p.id === id)
-
-  useEffect(() => {
-    fetch("/posts.json")
-      .then(res => res.json())
-      .then(data => {
-        const found = data.posts.find((p: PostMetadata) => p.id === id)
-        setPostMetadata(found || null)
-        setLoading(false)
-      })
-      .catch(() => setLoading(false))
-  }, [id])
-
-  if (loading) {
-    return (
-      <Layout>
-        <div className="py-20 text-center">
-          <p className="text-[#555555]">Carregando...</p>
-        </div>
-      </Layout>
-    )
-  }
+  const postMetadata =
+    postsData.posts.find((p: PostMetadata) => p.id === id) || null
 
   if (!postMetadata || !postContent) {
     return (
@@ -75,7 +52,7 @@ export default function Post({ id }: PostProps) {
             <span>·</span>
             <Link
               href={`/autor/${postMetadata.author.id}`}
-              className="text-[#2E6BE6] hover:underline"
+              className="text-[#555555] hover:underline"
             >
               {postMetadata.author.name}
             </Link>

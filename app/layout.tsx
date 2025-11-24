@@ -7,25 +7,28 @@ const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "v0 App",
-  description: "Created with v0",
-  generator: "v0.app",
+  title: "Graphe",
+  description: "Graphe",
   icons: {
     icon: [
       {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
+        url: "/favicon-96x96.png",
+        sizes: "96x96",
+        type: "image/png",
       },
       {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
+        url: "/favicon.svg",
         type: "image/svg+xml",
       },
+      {
+        url: "/favicon.ico",
+        sizes: "any",
+      },
     ],
-    apple: "/apple-icon.png",
+    apple: "/apple-touch-icon.png",
+  },
+  appleWebApp: {
+    title: "Graphe",
   },
 }
 

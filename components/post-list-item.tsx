@@ -26,7 +26,7 @@ export default function PostListItem({ post }: PostListItemProps) {
   return (
     <article
       onClick={handleCardClick}
-      className="cursor-pointer border border-[#E5E5E5] p-6 transition-colors hover:border-[#2E6BE6]"
+      className="cursor-pointer border border-[#E5E5E5] p-6 transition-colors hover:border-[#333333]"
     >
       <h2 className="mb-2 text-xl font-medium text-[#222222]">{post.title}</h2>
 
@@ -37,7 +37,7 @@ export default function PostListItem({ post }: PostListItemProps) {
         <span>·</span>
         <Link
           href={`/autor/${post.authorId}`}
-          className="text-[#2E6BE6] hover:underline"
+          className="text-[#333333] hover:underline"
           onClick={e => e.stopPropagation()}
         >
           {post.authorName}

@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Layout from "./layout"
-import { readFileSync } from "fs"
-import { join } from "path"
+import PostListItem from "./post-list-item"
+import postsData from "@/lib/posts.json"
 
 interface Post {
   id: string
@@ -25,11 +25,6 @@ export default function AuthorStatic({
   authorName,
   authorBio,
 }: AuthorStaticProps) {
-  const publicPath = join(process.cwd(), "public")
-  const postsData = JSON.parse(
-    readFileSync(join(publicPath, "posts.json"), "utf-8")
-  )
-
   const authorPosts = postsData.posts.filter(
     (p: Post) => p.author.id === authorId
   )
@@ -68,20 +63,17 @@ export default function AuthorStatic({
 
           <div className="space-y-6">
             {authorPosts.map((post: Post) => (
-              <article
+              <PostListItem
                 key={post.id}
-                className="border-l-2 border-[#E5E5E5] pl-6 transition-colors hover:border-[#2E6BE6]"
-              >
-                <Link href={`/post/${post.id}`}>
-                  <h3 className="mb-2 text-xl font-medium text-[#222222] transition-colors hover:text-[#2E6BE6]">
-                    {post.title}
-                  </h3>
-                </Link>
-                {post.subtitle && (
-                  <p className="mb-2 text-[#555555]">{post.subtitle}</p>
-                )}
-                <time className="text-sm text-[#555555]">{post.date}</time>
-              </article>
+                post={{
+                  id: post.id,
+                  title: post.title,
+                  subtitle: post.subtitle,
+                  date: post.date,
+                  authorId: post.author.id,
+                  authorName: post.author.name,
+                }}
+              />
             ))}
           </div>
         </section>
