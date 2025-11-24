@@ -19,15 +19,27 @@ interface Post {
   }
 }
 
+interface AuthorData {
+  id: string
+  name: string
+  bio: string
+}
+
 export default function Author({ id }: AuthorProps) {
+  const [authorData, setAuthorData] = useState<AuthorData | null>(null)
   const [authorPosts, setAuthorPosts] = useState<Post[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch("/posts.json")
-      .then(res => res.json())
-      .then(data => {
-        const filtered = data.posts.filter((p: Post) => p.author.id === id)
+    Promise.all([
+      fetch("/authors.json").then(res => res.json()),
+      fetch("/posts.json").then(res => res.json()),
+    ])
+      .then(([authorsData, postsData]) => {
+        const author = authorsData.authors.find((a: AuthorData) => a.id === id)
+        const filtered = postsData.posts.filter((p: Post) => p.author.id === id)
+
+        setAuthorData(author || null)
         setAuthorPosts(filtered)
         setLoading(false)
       })
@@ -44,7 +56,7 @@ export default function Author({ id }: AuthorProps) {
     )
   }
 
-  if (authorPosts.length === 0) {
+  if (!authorData || authorPosts.length === 0) {
     return (
       <Layout>
         <div className="py-20 text-center">
@@ -59,15 +71,16 @@ export default function Author({ id }: AuthorProps) {
     )
   }
 
-  const author = authorPosts[0].author
-
   return (
     <Layout>
       <div className="mx-auto max-w-2xl">
         <header className="mb-12 border-b border-[#E5E5E5] pb-8">
           <h1 className="mb-4 text-4xl font-medium text-[#222222]">
-            {author.name}
+            {authorData.name}
           </h1>
+          {authorData.bio && (
+            <p className="leading-relaxed text-[#555555]">{authorData.bio}</p>
+          )}
         </header>
 
         <section>

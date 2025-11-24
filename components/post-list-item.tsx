@@ -28,13 +28,9 @@ export default function PostListItem({ post }: PostListItemProps) {
       onClick={handleCardClick}
       className="cursor-pointer border border-[#E5E5E5] p-6 transition-colors hover:border-[#2E6BE6]"
     >
-      <h2 className="mb-2 text-xl font-medium text-[#222222]">
-        {post.title}
-      </h2>
+      <h2 className="mb-2 text-xl font-medium text-[#222222]">{post.title}</h2>
 
-      {post.subtitle && (
-        <p className="mb-4 text-[#555555]">{post.subtitle}</p>
-      )}
+      {post.subtitle && <p className="mb-4 text-[#555555]">{post.subtitle}</p>}
 
       <div className="flex items-center gap-4 text-sm text-[#555555]">
         <time>{post.date}</time>
