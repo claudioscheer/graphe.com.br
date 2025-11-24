@@ -1,18 +1,53 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import Layout from "./layout"
 import MarkdownRenderer from "./markdown-renderer"
-import { posts, authors } from "@/lib/data"
+import { posts } from "@/lib/data"
 
 interface PostProps {
   id: string
 }
 
-export default function Post({ id }: PostProps) {
-  const post = posts.find(p => p.id === id)
+interface PostMetadata {
+  id: string
+  title: string
+  subtitle?: string
+  date: string
+  author: {
+    id: string
+    name: string
+  }
+}
 
-  if (!post) {
+export default function Post({ id }: PostProps) {
+  const [postMetadata, setPostMetadata] = useState<PostMetadata | null>(null)
+  const [loading, setLoading] = useState(true)
+  const postContent = posts.find(p => p.id === id)
+
+  useEffect(() => {
+    fetch("/posts.json")
+      .then(res => res.json())
+      .then(data => {
+        const found = data.posts.find((p: PostMetadata) => p.id === id)
+        setPostMetadata(found || null)
+        setLoading(false)
+      })
+      .catch(() => setLoading(false))
+  }, [id])
+
+  if (loading) {
+    return (
+      <Layout>
+        <div className="py-20 text-center">
+          <p className="text-[#555555]">Carregando...</p>
+        </div>
+      </Layout>
+    )
+  }
+
+  if (!postMetadata || !postContent) {
     return (
       <Layout>
         <div className="py-20 text-center">
@@ -27,29 +62,27 @@ export default function Post({ id }: PostProps) {
     )
   }
 
-  const author = authors.find(a => a.id === post.authorId)
-
   return (
     <Layout>
       <article className="mx-auto max-w-2xl">
         <header className="mb-12 border-b border-[#E5E5E5] pb-8">
           <h1 className="mb-4 text-4xl font-medium text-[#222222]">
-            {post.title}
+            {postMetadata.title}
           </h1>
 
           <div className="flex items-center gap-4 text-sm text-[#555555]">
-            <time>{post.date}</time>
+            <time>{postMetadata.date}</time>
             <span>·</span>
             <Link
-              href={`/autor/${post.authorId}`}
+              href={`/autor/${postMetadata.author.id}`}
               className="text-[#2E6BE6] hover:underline"
             >
-              {author?.name}
+              {postMetadata.author.name}
             </Link>
           </div>
         </header>
 
-        <MarkdownRenderer content={post.content} />
+        <MarkdownRenderer content={postContent.content} />
       </article>
     </Layout>
   )

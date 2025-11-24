@@ -1,0 +1,38 @@
+{
+  "posts": [
+    {
+      "id": "inspiracao-escrituras",
+      "title": "A inspiração das Escrituras e sua autoridade",
+      "subtitle": "Como Deus nos fala através da Sua Palavra",
+      "date": "15 de Janeiro, 2025",
+      "link": "/post/inspiracao-escrituras",
+      "author": {
+        "id": "joao-santos",
+        "name": "João Santos"
+      }
+    },
+    {
+      "id": "santificacao-diaria",
+      "title": "Sobre a prática diária da santificação",
+      "subtitle": "Crescendo em santidade pela graça de Deus",
+      "date": "10 de Janeiro, 2025",
+      "link": "/post/santificacao-diaria",
+      "author": {
+        "id": "maria-oliveira",
+        "name": "Maria Oliveira"
+      }
+    },
+    {
+      "id": "cristo-fundamento",
+      "title": "Cristo como fundamento da fé cristã",
+      "subtitle": "A centralidade de Jesus em tudo",
+      "date": "5 de Janeiro, 2025",
+      "link": "/post/cristo-fundamento",
+      "author": {
+        "id": "joao-santos",
+        "name": "João Santos"
+      }
+    }
+  ]
+}
+
