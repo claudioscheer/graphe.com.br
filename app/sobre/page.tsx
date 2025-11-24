@@ -11,9 +11,10 @@ export default function SobrePage() {
         <div className="space-y-4 leading-relaxed text-[#555555]">
           <p>
             Graphe vem da palavra grega <span className="italic">γραφὴ</span>{" "}
-            (graphē), que significa "Escrituras" ou "aquilo que foi escrito".
-            Este termo é usado pelo apóstolo Paulo em 2 Timóteo 3:16, quando
-            afirma que "toda Escritura é inspirada por Deus".
+            (graphē), que significa &quot;Escrituras&quot; ou &quot;aquilo que
+            foi escrito&quot;. Este termo é usado pelo apóstolo Paulo em 2
+            Timóteo 3:16, quando afirma que &quot;toda Escritura é inspirada por
+            Deus&quot;.
           </p>
 
           <p>
@@ -37,9 +38,9 @@ export default function SobrePage() {
           </p>
 
           <p className="pt-4 text-sm text-[#555555] italic">
-            "Toda Escritura é inspirada por Deus e útil para o ensino, para a
-            repreensão, para a correção e para a instrução na justiça." — 2
-            Timóteo 3:16
+            &quot;Toda Escritura é inspirada por Deus e útil para o ensino, para
+            a repreensão, para a correção e para a instrução na justiça.&quot; —
+            2 Timóteo 3:16
           </p>
         </div>
       </article>
