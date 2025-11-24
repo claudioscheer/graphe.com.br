@@ -1,4 +1,5 @@
 import Layout from "@/components/layout"
+import Image from "next/image"
 
 export default function SobrePage() {
   return (
@@ -18,30 +19,40 @@ export default function SobrePage() {
           </p>
 
           <p>
-            Este blog foi criado com o propósito de refletir sobre a doutrina
-            cristã, oferecendo ensinamentos bíblicos fundamentados nas Sagradas
-            Escrituras. Nosso objetivo é compartilhar estudos teológicos,
-            reflexões sobre a vida cristã e a aplicação prática da Palavra de
-            Deus no cotidiano.
+            Este blog foi criado para refletirmos juntos sobre a doutrina cristã
+            e os ensinamentos bíblicos. Nosso desejo é compartilhar estudos,
+            reflexões sobre a vida cristã e descobrir como aplicar a Palavra de
+            Deus no nosso dia a dia.
           </p>
 
           <p>
-            Acreditamos que a Bíblia é a revelação especial de Deus à
-            humanidade, inerrante em seus manuscritos originais e suficiente
-            para guiar o crente em toda verdade. Por isso, buscamos tratar cada
-            tema com reverência, humildade e fidelidade ao texto sagrado.
+            Cremos no Deus Trino — Pai, Filho e Espírito Santo — revelado nas
+            Escrituras. Cremos que a Bíblia é a Palavra de Deus, inerrante e
+            suficiente para nos guiar em toda verdade. Por isso, buscamos tratar
+            cada tema com reverência e fidelidade ao texto sagrado, crendo que
+            somente as Escrituras são nossa regra de fé e prática.
           </p>
 
           <p>
-            Que o Senhor use este espaço para edificar a Igreja, fortalecer a fé
-            dos santos e glorificar o nome de Cristo em todas as coisas.
+            Que o Senhor use este espaço para glorificar o nome de Cristo,
+            edificar a Igreja e fortalecer nossa fé.
           </p>
 
-          <p className="pt-4 text-sm text-[#555555] italic">
+          <p className="pt-4 text-[#555555] italic">
             &quot;Toda Escritura é inspirada por Deus e útil para o ensino, para
             a repreensão, para a correção e para a instrução na justiça.&quot; —
             2 Timóteo 3:16
           </p>
+        </div>
+
+        <div className="mt-12 flex justify-center">
+          <Image
+            src="/graphe.png"
+            alt="Graphe"
+            width={256}
+            height={256}
+            className="object-contain"
+          />
         </div>
       </article>
     </Layout>
