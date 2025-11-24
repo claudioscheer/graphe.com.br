@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <Layout>
       <div className="space-y-6">
-        {posts.map((post) => (
+        {posts.map(post => (
           <PostListItem key={post.id} post={post} />
         ))}
       </div>

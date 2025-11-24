@@ -3,17 +3,23 @@ import Link from "next/link"
 export default function Navbar() {
   return (
     <nav className="border-b border-[#E5E5E5]">
-      <div className="max-w-3xl mx-auto px-6 py-4 flex items-center">
-        <div className="flex items-center gap-3 mr-8">
-          <div className="w-8 h-8 border border-[#E5E5E5] flex items-center justify-center text-xs text-[#555555]">
+      <div className="mx-auto flex max-w-3xl items-center px-6 py-4">
+        <div className="mr-8 flex items-center gap-3">
+          <div className="flex h-8 w-8 items-center justify-center border border-[#E5E5E5] text-xs text-[#555555]">
             G
           </div>
-          <Link href="/" className="text-xl font-medium text-[#222222] hover:text-[#2E6BE6] transition-colors">
+          <Link
+            href="/"
+            className="text-xl font-medium text-[#222222] transition-colors hover:text-[#2E6BE6]"
+          >
             Graphe
           </Link>
         </div>
 
-        <Link href="/sobre" className="text-sm text-[#555555] hover:text-[#2E6BE6] transition-colors">
+        <Link
+          href="/sobre"
+          className="text-sm text-[#555555] transition-colors hover:text-[#2E6BE6]"
+        >
           Sobre
         </Link>
       </div>
