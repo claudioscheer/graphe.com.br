@@ -1,5 +1,13 @@
 import Layout from "@/components/layout"
 import Image from "next/image"
+import { generatePageMetadata } from "@/lib/metadata"
+
+export const metadata = generatePageMetadata({
+  title: "Sobre o Graphe",
+  description:
+    "Graphe vem da palavra grega γραφὴ (graphē), que significa Escrituras. Este blog foi criado para refletirmos juntos sobre a doutrina cristã e os ensinamentos bíblicos.",
+  path: "/sobre",
+})
 
 export default function SobrePage() {
   return (
