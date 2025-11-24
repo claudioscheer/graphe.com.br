@@ -14,7 +14,7 @@ export default function NotFound() {
         </p>
         <Link
           href="/"
-          className="border border-[#E5E5E5] px-6 py-3 text-[#222222] transition-colors hover:border-[#333333]"
+          className="border border-[#E5E5E5] px-8 py-4 text-[#222222] transition-colors hover:border-[#333333]"
         >
           Voltar para a página inicial
         </Link>
