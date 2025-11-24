@@ -3,8 +3,7 @@ import { generatePageMetadata } from "@/lib/metadata"
 
 export const metadata = generatePageMetadata({
   title: "Graphe",
-  description:
-    "Graphe - Artigos e reflexões sobre temas relevantes da fé cristã. Estudos bíblicos e ensinamentos para aplicar a Palavra de Deus no dia a dia.",
+  description: "Graphe - Vivendo as Escrituras.",
   path: "/",
 })
 

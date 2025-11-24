@@ -4,7 +4,8 @@ import { generateAuthorMetadata } from "@/lib/metadata"
 export const metadata = generateAuthorMetadata({
   authorName: "Claudio Scheer",
   authorId: "claudio-scheer",
-  authorBio: "Aprendiz das Escrituras, buscando crescer no conhecimento de Deus e de Sua Palavra.",
+  authorBio:
+    "Aprendiz das Escrituras, buscando crescer no conhecimento de Deus e de Sua Palavra.",
 })
 
 export default function ClaudioScheerPage() {
@@ -16,4 +17,3 @@ export default function ClaudioScheerPage() {
     />
   )
 }
-

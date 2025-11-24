@@ -18,8 +18,7 @@ export function generatePostMetadata({
   publishedTime,
 }: PostMetadataParams): Metadata {
   const fullTitle = `${title} | Graphe`
-  const metaDescription =
-    description || "Graphe - Artigos e reflexões sobre temas relevantes da fé cristã"
+  const metaDescription = description || "Graphe - Vivendo as Escrituras"
 
   return {
     title: fullTitle,
@@ -105,4 +104,3 @@ export function generatePageMetadata({
     },
   }
 }
-

@@ -25,4 +25,3 @@ Em breve, este site trará artigos e reflexões sobre temas relevantes da fé cr
     />
   )
 }
-

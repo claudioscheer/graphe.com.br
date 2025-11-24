@@ -27,6 +27,7 @@ export default function SobrePage() {
           </p>
 
           <p>
+            <strong>Vivendo as Escrituras</strong> — este é o nosso propósito.
             Este blog foi criado para refletirmos juntos sobre a doutrina cristã
             e os ensinamentos bíblicos. Nosso desejo é compartilhar estudos,
             reflexões sobre a vida cristã e descobrir como aplicar a Palavra de
