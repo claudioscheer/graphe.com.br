@@ -1,5 +1,6 @@
 import Layout from "@/components/layout"
 import Image from "next/image"
+import Link from "next/link"
 import { generatePageMetadata } from "@/lib/metadata"
 
 export const metadata = generatePageMetadata({
@@ -62,6 +63,15 @@ export default function SobrePage() {
             height={256}
             className="object-contain"
           />
+        </div>
+
+        <div className="mt-8 flex justify-center">
+          <Link
+            href="/"
+            className="border border-[#E5E5E5] px-6 py-3 text-[#222222] transition-colors hover:border-[#333333]"
+          >
+            Ver artigos
+          </Link>
         </div>
       </article>
     </Layout>
