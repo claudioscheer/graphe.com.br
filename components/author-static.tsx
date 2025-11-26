@@ -2,6 +2,7 @@ import Link from "next/link"
 import Layout from "./layout"
 import PostListItem from "./post-list-item"
 import postsData from "@/lib/posts.json"
+import MarkdownRenderer from "./markdown-renderer"
 
 interface Post {
   id: string
@@ -52,7 +53,9 @@ export default function AuthorStatic({
             {authorName}
           </h1>
           {authorBio && (
-            <p className="leading-relaxed text-[#555555]">{authorBio}</p>
+            <div className="leading-relaxed text-[#555555]">
+              <MarkdownRenderer content={authorBio} />
+            </div>
           )}
         </header>
 
