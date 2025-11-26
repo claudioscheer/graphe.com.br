@@ -15,18 +15,17 @@ export default function Navbar() {
               className="object-contain"
             />
           </div>
-          <Link
-            href="/"
-            className="text-xl font-medium text-[#222222] transition-colors hover:text-[#2E6BE6]"
-          >
-            Graphe
+          <Link href="/" className="group flex flex-col">
+            <span className="text-xl font-medium text-[#222222] group-hover:underline">
+              Graphe
+            </span>
+            <span className="hidden text-xs text-[#888888] sm:block">
+              Vivendo as Escrituras
+            </span>
           </Link>
         </div>
 
-        <Link
-          href="/sobre"
-          className="text-sm text-[#555555] transition-colors hover:text-[#2E6BE6]"
-        >
+        <Link href="/sobre" className="text-sm text-[#555555] hover:underline">
           Sobre
         </Link>
       </div>

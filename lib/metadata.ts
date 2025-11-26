@@ -85,7 +85,11 @@ export function generatePageMetadata({
   description,
   path,
 }: PageMetadataParams): Metadata {
-  const fullTitle = title === "Graphe" ? title : `${title} | Graphe`
+  const isHomePage =
+    title === "Graphe" || title === "Graphe - Vivendo as Escrituras"
+  const fullTitle = isHomePage
+    ? "Graphe - Vivendo as Escrituras"
+    : `${title} | Graphe`
 
   return {
     title: fullTitle,
