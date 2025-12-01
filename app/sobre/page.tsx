@@ -13,7 +13,7 @@ export const metadata = generatePageMetadata({
 
 const sobreContent = `# Sobre Graphe
 
-Graphe vem da palavra grega *γραφὴ* (graphē), que significa "Escrituras" ou "aquilo que foi escrito". Este termo é usado pelo apóstolo Paulo em *2 Timóteo 3:16*, quando afirma que "toda Escritura é inspirada por Deus".
+Graphe vem da palavra grega *γραφὴ* (graphē), que significa "Escrituras" ou "aquilo que foi escrito". Este termo é usado pelo apóstolo Paulo em 2 Timóteo 3:16, quando afirma que "toda Escritura é inspirada por Deus".
 
 **Vivendo as Escrituras** — este é o nosso propósito. Este blog foi criado para refletirmos juntos sobre a doutrina cristã e os ensinamentos bíblicos. Nosso desejo é compartilhar estudos, reflexões sobre a vida cristã e descobrir como aplicar a Palavra de Deus no nosso dia a dia.
 

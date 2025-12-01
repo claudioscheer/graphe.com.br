@@ -1,11 +1,11 @@
 {
   "posts": [
     {
-      "id": "site-em-construcao",
-      "title": "Site em construção",
-      "subtitle": "Estamos trabalhando para trazer conteúdo de qualidade em breve",
-      "date": "24 de Novembro, 2025",
-      "link": "/post/site-em-construcao",
+      "id": "santa-ceia",
+      "title": "Santa Ceia",
+      "subtitle": "Estudo sobre a Santa Ceia: sua instituição por Jesus, significado, preparação, ministração e quem pode participar.",
+      "date": "1 de Dezembro, 2025",
+      "link": "/post/santa-ceia",
       "author": {
         "id": "claudio-scheer",
         "name": "Claudio Scheer"
