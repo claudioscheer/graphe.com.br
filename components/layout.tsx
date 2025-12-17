@@ -1,4 +1,6 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
+import { Instagram } from "lucide-react";
 import Navbar from "./navbar";
 
 interface LayoutProps {
@@ -12,9 +14,20 @@ export default function Layout({ children }: LayoutProps) {
       <main className="mx-auto max-w-3xl px-6 py-12">{children}</main>
       <footer className="mt-20 border-t border-[#E5E5E5]">
         <div className="mx-auto max-w-3xl px-6 py-8">
-          <p className="text-sm text-[#555555]">
-            © 2025 Graphe. Todos os direitos reservados.
-          </p>
+          <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
+            <p className="text-sm text-[#555555]">
+              © 2025 Graphe. Todos os direitos reservados.
+            </p>
+            <Link
+              href="https://www.instagram.com/graphebr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-sm text-[#555555] transition-colors hover:text-[#222222]"
+            >
+              <Instagram size={18} />
+              <span>Instagram</span>
+            </Link>
+          </div>
         </div>
       </footer>
     </div>

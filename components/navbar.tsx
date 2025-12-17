@@ -6,12 +6,12 @@ export default function Navbar() {
     <nav className="border-b border-[#E5E5E5]">
       <div className="mx-auto flex max-w-3xl items-center px-6 py-4">
         <div className="mr-8 flex items-center gap-3">
-          <div className="flex h-8 w-8 items-center justify-center overflow-hidden">
+          <div className="flex h-16 w-16 items-center justify-center overflow-hidden">
             <Image
               src="/graphe.png"
               alt="Graphe"
-              width={32}
-              height={32}
+              width={72}
+              height={72}
               className="object-contain"
             />
           </div>
