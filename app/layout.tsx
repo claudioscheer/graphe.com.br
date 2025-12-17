@@ -12,16 +12,16 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "/favicon-96x96.png",
+        url: "/favicon-96x96.png?v=2",
         sizes: "96x96",
         type: "image/png",
       },
       {
-        url: "/favicon.ico",
+        url: "/favicon.ico?v=2",
         sizes: "any",
       },
     ],
-    apple: "/apple-touch-icon.png",
+    apple: "/apple-touch-icon.png?v=2",
   },
   appleWebApp: {
     title: "Graphe",
