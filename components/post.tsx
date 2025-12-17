@@ -1,28 +1,28 @@
-import Link from "next/link"
-import Layout from "./layout"
-import MarkdownRenderer from "./markdown-renderer"
-import { posts } from "@/lib/data"
-import postsData from "@/lib/posts.json"
+import Link from "next/link";
+import Layout from "./layout";
+import MarkdownRenderer from "./markdown-renderer";
+import { posts } from "@/lib/data";
+import postsData from "@/lib/posts.json";
 
 interface PostProps {
-  id: string
+  id: string;
 }
 
 interface PostMetadata {
-  id: string
-  title: string
-  subtitle?: string
-  date: string
+  id: string;
+  title: string;
+  subtitle?: string;
+  date: string;
   author: {
-    id: string
-    name: string
-  }
+    id: string;
+    name: string;
+  };
 }
 
 export default function Post({ id }: PostProps) {
-  const postContent = posts.find(p => p.id === id)
+  const postContent = posts.find(p => p.id === id);
   const postMetadata =
-    postsData.posts.find((p: PostMetadata) => p.id === id) || null
+    postsData.posts.find((p: PostMetadata) => p.id === id) || null;
 
   if (!postMetadata || !postContent) {
     return (
@@ -36,7 +36,7 @@ export default function Post({ id }: PostProps) {
           </Link>
         </div>
       </Layout>
-    )
+    );
   }
 
   return (
@@ -62,5 +62,5 @@ export default function Post({ id }: PostProps) {
         <MarkdownRenderer content={postContent.content} />
       </article>
     </Layout>
-  )
+  );
 }

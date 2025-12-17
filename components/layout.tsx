@@ -1,8 +1,8 @@
-import type { ReactNode } from "react"
-import Navbar from "./navbar"
+import type { ReactNode } from "react";
+import Navbar from "./navbar";
 
 interface LayoutProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
 export default function Layout({ children }: LayoutProps) {
@@ -18,5 +18,5 @@ export default function Layout({ children }: LayoutProps) {
         </div>
       </footer>
     </div>
-  )
+  );
 }

@@ -1,14 +1,14 @@
-import Link from "next/link"
-import Layout from "./layout"
-import MarkdownRenderer from "./markdown-renderer"
+import Link from "next/link";
+import Layout from "./layout";
+import MarkdownRenderer from "./markdown-renderer";
 
 interface PostStaticProps {
-  title: string
-  subtitle?: string
-  date: string
-  authorId: string
-  authorName: string
-  content: string
+  title: string;
+  subtitle?: string;
+  date: string;
+  authorId: string;
+  authorName: string;
+  content: string;
 }
 
 export default function PostStatic({
@@ -44,5 +44,5 @@ export default function PostStatic({
         <MarkdownRenderer content={content} />
       </article>
     </Layout>
-  )
+  );
 }

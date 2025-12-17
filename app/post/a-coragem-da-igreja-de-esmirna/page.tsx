@@ -1,5 +1,5 @@
-import PostStatic from "@/components/post-static"
-import { generatePostMetadata } from "@/lib/metadata"
+import PostStatic from "@/components/post-static";
+import { generatePostMetadata } from "@/lib/metadata";
 
 export const metadata = generatePostMetadata({
   title: "A Coragem da Igreja de Esmirna",
@@ -8,7 +8,7 @@ export const metadata = generatePostMetadata({
   postId: "a-coragem-da-igreja-de-esmirna",
   authorName: "Claudio Scheer",
   publishedTime: "2025-12-17",
-})
+});
 
 const content = `Por volta do ano 95 d.C., o apóstolo João escreveu uma carta, por ordem de Jesus Cristo, para a igreja de Esmirna, relatando a situação da igreja e o que estava por acontecer. Nos primeiros séculos da igreja, ser cristão significava viver sob a constante ameaça de morte.
 
@@ -76,7 +76,7 @@ Que sejamos firmes em Cristo. Que nossa fé seja verdadeira, não superficial. Q
 
 ---
 
-*Baseado em Apocalipse 2:8-11, no livro "O Livro Dos Mártires" de John Foxe e nos relatos históricos da igreja de Esmirna*`
+*Baseado em Apocalipse 2:8-11, no livro "O Livro Dos Mártires" de John Foxe e nos relatos históricos da igreja de Esmirna*`;
 
 export default function ACoragemDaIgrejaDeEsmirnaPage() {
   return (
@@ -88,5 +88,5 @@ export default function ACoragemDaIgrejaDeEsmirnaPage() {
       authorName="Claudio Scheer"
       content={content}
     />
-  )
+  );
 }

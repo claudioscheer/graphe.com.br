@@ -1,24 +1,24 @@
-import Link from "next/link"
-import Layout from "./layout"
-import PostListItem from "./post-list-item"
-import postsData from "@/lib/posts.json"
-import MarkdownRenderer from "./markdown-renderer"
+import Link from "next/link";
+import Layout from "./layout";
+import PostListItem from "./post-list-item";
+import postsData from "@/lib/posts.json";
+import MarkdownRenderer from "./markdown-renderer";
 
 interface Post {
-  id: string
-  title: string
-  subtitle?: string
-  date: string
+  id: string;
+  title: string;
+  subtitle?: string;
+  date: string;
   author: {
-    id: string
-    name: string
-  }
+    id: string;
+    name: string;
+  };
 }
 
 interface AuthorStaticProps {
-  authorId: string
-  authorName: string
-  authorBio: string
+  authorId: string;
+  authorName: string;
+  authorBio: string;
 }
 
 export default function AuthorStatic({
@@ -27,8 +27,8 @@ export default function AuthorStatic({
   authorBio,
 }: AuthorStaticProps) {
   const authorPosts = postsData.posts.filter(
-    (p: Post) => p.author.id === authorId
-  )
+    (p: Post) => p.author.id === authorId,
+  );
 
   if (authorPosts.length === 0) {
     return (
@@ -42,7 +42,7 @@ export default function AuthorStatic({
           </Link>
         </div>
       </Layout>
-    )
+    );
   }
 
   return (
@@ -82,5 +82,5 @@ export default function AuthorStatic({
         </section>
       </div>
     </Layout>
-  )
+  );
 }

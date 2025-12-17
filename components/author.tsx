@@ -1,25 +1,25 @@
-import Link from "next/link"
-import Layout from "./layout"
-import PostListItem from "./post-list-item"
-import postsData from "@/lib/posts.json"
+import Link from "next/link";
+import Layout from "./layout";
+import PostListItem from "./post-list-item";
+import postsData from "@/lib/posts.json";
 
 interface AuthorProps {
-  id: string
+  id: string;
 }
 
 interface Post {
-  id: string
-  title: string
-  subtitle?: string
-  date: string
+  id: string;
+  title: string;
+  subtitle?: string;
+  date: string;
   author: {
-    id: string
-    name: string
-  }
+    id: string;
+    name: string;
+  };
 }
 
 export default function Author({ id }: AuthorProps) {
-  const authorPosts = postsData.posts.filter((p: Post) => p.author.id === id)
+  const authorPosts = postsData.posts.filter((p: Post) => p.author.id === id);
 
   if (authorPosts.length === 0) {
     return (
@@ -33,7 +33,7 @@ export default function Author({ id }: AuthorProps) {
           </Link>
         </div>
       </Layout>
-    )
+    );
   }
 
   return (
@@ -68,5 +68,5 @@ export default function Author({ id }: AuthorProps) {
         </section>
       </div>
     </Layout>
-  )
+  );
 }

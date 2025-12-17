@@ -1,27 +1,27 @@
-"use client"
+"use client";
 
-import { useRouter } from "next/navigation"
-import Link from "next/link"
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface Post {
-  id: string
-  title: string
-  subtitle?: string
-  date: string
-  authorId: string
-  authorName: string
+  id: string;
+  title: string;
+  subtitle?: string;
+  date: string;
+  authorId: string;
+  authorName: string;
 }
 
 interface PostListItemProps {
-  post: Post
+  post: Post;
 }
 
 export default function PostListItem({ post }: PostListItemProps) {
-  const router = useRouter()
+  const router = useRouter();
 
   const handleCardClick = () => {
-    router.push(`/post/${post.id}`)
-  }
+    router.push(`/post/${post.id}`);
+  };
 
   return (
     <article
@@ -44,5 +44,5 @@ export default function PostListItem({ post }: PostListItemProps) {
         </Link>
       </div>
     </article>
-  )
+  );
 }

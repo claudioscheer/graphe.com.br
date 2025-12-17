@@ -1,13 +1,13 @@
-import type { Metadata } from "next"
+import type { Metadata } from "next";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://graphe.com.br"
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://graphe.com.br";
 
 interface PostMetadataParams {
-  title: string
-  description?: string
-  postId: string
-  authorName: string
-  publishedTime?: string
+  title: string;
+  description?: string;
+  postId: string;
+  authorName: string;
+  publishedTime?: string;
 }
 
 export function generatePostMetadata({
@@ -17,8 +17,8 @@ export function generatePostMetadata({
   authorName,
   publishedTime,
 }: PostMetadataParams): Metadata {
-  const fullTitle = `${title} | Graphe`
-  const metaDescription = description || "Graphe - Vivendo as Escrituras"
+  const fullTitle = `${title} | Graphe`;
+  const metaDescription = description || "Graphe - Vivendo as Escrituras";
 
   return {
     title: fullTitle,
@@ -37,13 +37,13 @@ export function generatePostMetadata({
       title: fullTitle,
       description: metaDescription,
     },
-  }
+  };
 }
 
 interface AuthorMetadataParams {
-  authorName: string
-  authorId: string
-  authorBio?: string
+  authorName: string;
+  authorId: string;
+  authorBio?: string;
 }
 
 export function generateAuthorMetadata({
@@ -51,10 +51,10 @@ export function generateAuthorMetadata({
   authorId,
   authorBio,
 }: AuthorMetadataParams): Metadata {
-  const fullTitle = `${authorName} | Graphe`
+  const fullTitle = `${authorName} | Graphe`;
   const metaDescription =
     authorBio ||
-    `Artigos e reflexões de ${authorName} sobre temas relevantes da fé cristã.`
+    `Artigos e reflexões de ${authorName} sobre temas relevantes da fé cristã.`;
 
   return {
     title: fullTitle,
@@ -71,13 +71,13 @@ export function generateAuthorMetadata({
       title: fullTitle,
       description: metaDescription,
     },
-  }
+  };
 }
 
 interface PageMetadataParams {
-  title: string
-  description: string
-  path: string
+  title: string;
+  description: string;
+  path: string;
 }
 
 export function generatePageMetadata({
@@ -86,10 +86,10 @@ export function generatePageMetadata({
   path,
 }: PageMetadataParams): Metadata {
   const isHomePage =
-    title === "Graphe" || title === "Graphe - Vivendo as Escrituras"
+    title === "Graphe" || title === "Graphe - Vivendo as Escrituras";
   const fullTitle = isHomePage
     ? "Graphe - Vivendo as Escrituras"
-    : `${title} | Graphe`
+    : `${title} | Graphe`;
 
   return {
     title: fullTitle,
@@ -106,5 +106,5 @@ export function generatePageMetadata({
       title: fullTitle,
       description,
     },
-  }
+  };
 }

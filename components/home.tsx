@@ -1,16 +1,16 @@
-import Layout from "./layout"
-import PostListItem from "./post-list-item"
-import postsData from "@/lib/posts.json"
+import Layout from "./layout";
+import PostListItem from "./post-list-item";
+import postsData from "@/lib/posts.json";
 
 interface Post {
-  id: string
-  title: string
-  subtitle?: string
-  date: string
+  id: string;
+  title: string;
+  subtitle?: string;
+  date: string;
   author: {
-    id: string
-    name: string
-  }
+    id: string;
+    name: string;
+  };
 }
 
 export default function Home() {
@@ -21,7 +21,7 @@ export default function Home() {
     date: post.date,
     authorId: post.author.id,
     authorName: post.author.name,
-  }))
+  }));
 
   return (
     <Layout>
@@ -31,5 +31,5 @@ export default function Home() {
         ))}
       </div>
     </Layout>
-  )
+  );
 }

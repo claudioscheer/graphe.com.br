@@ -1,15 +1,15 @@
-import Layout from "@/components/layout"
-import Image from "next/image"
-import Link from "next/link"
-import MarkdownRenderer from "@/components/markdown-renderer"
-import { generatePageMetadata } from "@/lib/metadata"
+import Layout from "@/components/layout";
+import Image from "next/image";
+import Link from "next/link";
+import MarkdownRenderer from "@/components/markdown-renderer";
+import { generatePageMetadata } from "@/lib/metadata";
 
 export const metadata = generatePageMetadata({
   title: "Sobre Graphe",
   description:
     "Graphe vem da palavra grega γραφὴ (graphē), que significa Escrituras. Este blog foi criado para refletirmos juntos sobre a doutrina cristã e os ensinamentos bíblicos.",
   path: "/sobre",
-})
+});
 
 const sobreContent = `# Sobre Graphe
 
@@ -24,7 +24,7 @@ Que o Senhor use este espaço para glorificar o nome de Cristo, edificar a Igrej
 > Toda Escritura é inspirada por Deus e útil para o ensino, para a repreensão, para a correção e para a instrução na justiça.
 >
 > 2 Timóteo 3:16
-`
+`;
 
 export default function SobrePage() {
   return (
@@ -52,5 +52,5 @@ export default function SobrePage() {
         </div>
       </article>
     </Layout>
-  )
+  );
 }

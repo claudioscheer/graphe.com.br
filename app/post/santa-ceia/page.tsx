@@ -1,5 +1,5 @@
-import PostStatic from "@/components/post-static"
-import { generatePostMetadata } from "@/lib/metadata"
+import PostStatic from "@/components/post-static";
+import { generatePostMetadata } from "@/lib/metadata";
 
 export const metadata = generatePostMetadata({
   title: "Santa Ceia",
@@ -8,7 +8,7 @@ export const metadata = generatePostMetadata({
   postId: "santa-ceia",
   authorName: "Claudio Scheer",
   publishedTime: "2025-12-01",
-})
+});
 
 const content = `A Santa Ceia foi instituída por Jesus no dia em que Ele foi traído (Mateus 26:26-30; Marcos 14:22-26; Lucas 22:19-20). Naquele momento especial, Jesus pegou o pão, deu graças a Deus, partiu-o e deu aos seus discípulos, dizendo: *"Isto é o meu corpo, que é dado por vocês; façam isto em memória de mim"* (Lucas 22:19). Da mesma forma, Ele pegou o cálice com vinho, deu graças e disse: *"Isto é o meu sangue, o sangue da aliança, derramado em favor de muitos"* (Marcos 14:24).
 
@@ -161,7 +161,7 @@ Essa dualidade não enfraquece os princípios de vigilância espiritual, mas sub
 [^14]: Teologia Sistemática, Wayne Grudem, página 1336
 
 [^15]: O Poder da Ceia do Senhor, Derek Prince, página 33
-`
+`;
 
 export default function SantaCeiaPage() {
   return (
@@ -173,5 +173,5 @@ export default function SantaCeiaPage() {
       authorName="Claudio Scheer"
       content={content}
     />
-  )
+  );
 }
