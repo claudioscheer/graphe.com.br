@@ -1,7 +1,6 @@
 import Link from "next/link"
 import Layout from "./layout"
 import PostListItem from "./post-list-item"
-import { authors } from "@/lib/data"
 import postsData from "@/lib/posts.json"
 
 interface AuthorProps {
@@ -19,17 +18,10 @@ interface Post {
   }
 }
 
-interface AuthorData {
-  id: string
-  name: string
-  bio: string
-}
-
 export default function Author({ id }: AuthorProps) {
-  const authorData = authors.find((a: AuthorData) => a.id === id) || null
   const authorPosts = postsData.posts.filter((p: Post) => p.author.id === id)
 
-  if (!authorData || authorPosts.length === 0) {
+  if (authorPosts.length === 0) {
     return (
       <Layout>
         <div className="py-20 text-center">
@@ -49,11 +41,8 @@ export default function Author({ id }: AuthorProps) {
       <div className="mx-auto max-w-2xl">
         <header className="mb-12 border-b border-[#E5E5E5] pb-8">
           <h1 className="mb-4 text-4xl font-medium text-[#222222]">
-            {authorData.name}
+            {authorPosts[0]?.author.name || "Autor"}
           </h1>
-          {authorData.bio && (
-            <p className="leading-relaxed text-[#555555]">{authorData.bio}</p>
-          )}
         </header>
 
         <section>

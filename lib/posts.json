@@ -1,6 +1,17 @@
 {
   "posts": [
     {
+      "id": "a-coragem-da-igreja-de-esmirna",
+      "title": "A Coragem da Igreja de Esmirna",
+      "subtitle": "Quando a fé custa tudo: a história da igreja de Esmirna e o martírio de Policarpo, um exemplo de coragem e fidelidade a Cristo.",
+      "date": "17 de Dezembro, 2025",
+      "link": "/post/a-coragem-da-igreja-de-esmirna",
+      "author": {
+        "id": "claudio-scheer",
+        "name": "Claudio Scheer"
+      }
+    },
+    {
       "id": "santa-ceia",
       "title": "Santa Ceia",
       "subtitle": "Estudo sobre a Santa Ceia: sua instituição por Jesus, significado, preparação, ministração e quem pode participar.",
