@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { Instagram } from "lucide-react";
+import { Instagram, Youtube } from "lucide-react";
 import Navbar from "./navbar";
 
 interface LayoutProps {
@@ -18,15 +18,26 @@ export default function Layout({ children }: LayoutProps) {
             <p className="text-sm text-[#555555]">
               © 2025 Graphe. Todos os direitos reservados.
             </p>
-            <Link
-              href="https://www.instagram.com/graphebr"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-sm text-[#555555] transition-colors hover:text-[#222222]"
-            >
-              <Instagram size={18} />
-              <span>Instagram</span>
-            </Link>
+            <div className="flex items-center gap-4">
+              <Link
+                href="https://www.instagram.com/graphebr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-[#555555] transition-colors hover:text-[#222222]"
+              >
+                <Instagram size={18} />
+                <span>Instagram</span>
+              </Link>
+              <Link
+                href="https://www.youtube.com/@grapheio"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-[#555555] transition-colors hover:text-[#222222]"
+              >
+                <Youtube size={18} />
+                <span>YouTube</span>
+              </Link>
+            </div>
           </div>
         </div>
       </footer>
