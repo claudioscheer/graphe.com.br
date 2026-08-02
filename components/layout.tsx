@@ -16,7 +16,8 @@ export default function Layout({ children }: LayoutProps) {
         <div className="mx-auto max-w-3xl px-6 py-8">
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
             <p className="text-sm text-[#555555]">
-              © 2025 Graphe. Todos os direitos reservados.
+              © {new Date().getFullYear()} Graphe. Todos os direitos
+              reservados.
             </p>
             <div className="flex items-center gap-4">
               <Link

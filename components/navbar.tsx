@@ -25,9 +25,20 @@ export default function Navbar() {
           </Link>
         </div>
 
-        <Link href="/sobre" className="text-sm text-[#555555] hover:underline">
-          Sobre
-        </Link>
+        <div className="flex items-center gap-6">
+          <Link
+            href="/software-biblico"
+            className="text-sm font-medium text-[#222222] hover:underline"
+          >
+            Nosso Software Bíblico
+          </Link>
+          <Link
+            href="/sobre"
+            className="text-sm text-[#555555] hover:underline"
+          >
+            Sobre
+          </Link>
+        </div>
       </div>
     </nav>
   );

@@ -28,22 +28,38 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
+          # npm cache is keyed on package-lock.json only; restored on every
+          # run and only replaced when dependency versions change.
           cache: "npm"
+          cache-dependency-path: package-lock.json
 
-      - name: Restore cache
-        uses: actions/cache@v4
+      - name: Restore Next.js cache
+        id: nextjs-cache
+        uses: actions/cache/restore@v4
         with:
           path: |
             .next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          # Exact key = dependency versions only. Content-only deploys keep
+          # hitting this cache. A new package-lock (or next config) is a miss.
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('package-lock.json', 'next.config.mjs') }}
           restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+            ${{ runner.os }}-nextjs-
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --prefer-offline
 
       - name: Build with Next.js
         run: npm run build
+
+      # actions/cache does not overwrite an existing exact key. Only save when
+      # this version of the deps has no cache yet (first build or lockfile change).
+      - name: Save Next.js cache
+        if: steps.nextjs-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            .next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('package-lock.json', 'next.config.mjs') }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
