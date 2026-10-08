@@ -157,9 +157,8 @@ export default function SoftwarePage() {
               O Graphe usa o formato{" "}
               <strong className="font-medium">MyBible SQLite3</strong> e
               reconhece sozinho bíblias, dicionários, comentários e referências
-              cruzadas. Instale pelo menu{" "}
-              <em>File → Install Modules...</em> e os arquivos vão para a pasta
-              de módulos do sistema.
+              cruzadas. Instale pelo menu <em>File → Install Modules...</em> e
+              os arquivos vão para a pasta de módulos do sistema.
             </p>
             <p>
               Já tem biblioteca no theWord ou no MySword? Use{" "}
@@ -222,9 +221,9 @@ export default function SoftwarePage() {
             Comece agora
           </h2>
           <p className="mb-6 leading-relaxed text-[#555555]">
-            Baixe a versão do seu sistema, instale os módulos e monte o
-            primeiro estudo. O código e o histórico de versões estão públicos
-            no repositório.
+            Baixe a versão do seu sistema, instale os módulos e monte o primeiro
+            estudo. O código e o histórico de versões estão públicos no
+            repositório.
           </p>
           <SoftwareDownloads>
             <ExternalLink href={GITHUB_URL}>

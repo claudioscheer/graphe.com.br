@@ -21,7 +21,7 @@ export function macDownloadUrl(assets: ReleaseAsset[]): string {
     asset =>
       typeof asset?.name === "string" &&
       typeof asset?.browser_download_url === "string" &&
-      asset.name.toLowerCase().endsWith(".dmg")
+      asset.name.toLowerCase().endsWith(".dmg"),
   );
   const universal =
     dmgs.find(asset => asset.name.toLowerCase().includes("universal")) ??
