@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import Layout from "@/components/layout";
+import { SoftwareDownloads } from "@/components/software-downloads";
 import Image from "next/image";
 import Link from "next/link";
 import { generatePageMetadata } from "@/lib/metadata";
@@ -12,7 +13,6 @@ export const metadata = generatePageMetadata({
 });
 
 const GITHUB_URL = "https://github.com/claudioscheer/graphe";
-const RELEASES_URL = "https://github.com/claudioscheer/graphe/releases/latest";
 const TELEGRAM_URL = "https://t.me/graphebiblesoftware";
 
 const features = [
@@ -102,13 +102,10 @@ export default function SoftwarePage() {
           />
         </div>
 
-        <div className="mb-12 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-          <ExternalLink href={RELEASES_URL} primary>
-            Baixar última versão
-          </ExternalLink>
+        <SoftwareDownloads explain>
           <ExternalLink href={GITHUB_URL}>Ver no GitHub</ExternalLink>
           <ExternalLink href={TELEGRAM_URL}>Grupo no Telegram</ExternalLink>
-        </div>
+        </SoftwareDownloads>
 
         <section className="mb-12">
           <h2 className="mb-4 text-2xl font-medium text-[#222222]">
@@ -225,18 +222,15 @@ export default function SoftwarePage() {
             Comece agora
           </h2>
           <p className="mb-6 leading-relaxed text-[#555555]">
-            Baixe a última release no GitHub, instale seus módulos e monte o
+            Baixe a versão do seu sistema, instale os módulos e monte o
             primeiro estudo. O código e o histórico de versões estão públicos
             no repositório.
           </p>
-          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <ExternalLink href={RELEASES_URL} primary>
-              Baixar última versão
-            </ExternalLink>
+          <SoftwareDownloads>
             <ExternalLink href={GITHUB_URL}>
               github.com/claudioscheer/graphe
             </ExternalLink>
-          </div>
+          </SoftwareDownloads>
         </section>
       </article>
     </Layout>
