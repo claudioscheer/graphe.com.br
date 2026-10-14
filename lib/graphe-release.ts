@@ -1,10 +1,25 @@
 export const GRAPHE_RELEASES_PAGE =
   "https://github.com/claudioscheer/graphe/releases/latest";
 
-// The Windows installer is always published as graphe-bible.msi, so this
-// URL keeps pointing at the latest release without a version in the name.
+// Windows assets
 export const GRAPHE_WINDOWS_DOWNLOAD =
-  "https://github.com/claudioscheer/graphe/releases/latest/download/graphe-bible.msi";
+  "https://github.com/claudioscheer/graphe/releases/latest/download/graphe-windows-installer.exe";
+export const GRAPHE_WINDOWS_ZIP_DOWNLOAD =
+  "https://github.com/claudioscheer/graphe/releases/latest/download/graphe-windows.zip";
+
+// macOS assets
+export const GRAPHE_MAC_DOWNLOAD =
+  "https://github.com/claudioscheer/graphe/releases/latest/download/graphe-macos.dmg";
+export const GRAPHE_MAC_ZIP_DOWNLOAD =
+  "https://github.com/claudioscheer/graphe/releases/latest/download/graphe-macos.zip";
+
+// Linux assets
+export const GRAPHE_LINUX_APPIMAGE_DOWNLOAD =
+  "https://github.com/claudioscheer/graphe/releases/latest/download/graphe-linux.AppImage";
+export const GRAPHE_LINUX_DEB_DOWNLOAD =
+  "https://github.com/claudioscheer/graphe/releases/latest/download/graphe-linux.deb";
+export const GRAPHE_LINUX_TARGZ_DOWNLOAD =
+  "https://github.com/claudioscheer/graphe/releases/latest/download/graphe-linux.tar.gz";
 
 export const GRAPHE_LATEST_RELEASE_API =
   "https://api.github.com/repos/claudioscheer/graphe/releases/latest";
@@ -14,8 +29,6 @@ export type ReleaseAsset = {
   browser_download_url: string;
 };
 
-// The macOS disk image name includes the version (Graphe-1.0.11-universal.dmg),
-// so the latest file has to be chosen from the release assets.
 export function macDownloadUrl(assets: ReleaseAsset[]): string {
   const dmgs = assets.filter(
     asset =>
@@ -23,9 +36,24 @@ export function macDownloadUrl(assets: ReleaseAsset[]): string {
       typeof asset?.browser_download_url === "string" &&
       asset.name.toLowerCase().endsWith(".dmg"),
   );
-  const universal =
+  const dmg =
+    dmgs.find(asset => asset.name === "graphe-macos.dmg") ??
     dmgs.find(asset => asset.name.toLowerCase().includes("universal")) ??
     dmgs[0];
 
-  return universal?.browser_download_url ?? GRAPHE_RELEASES_PAGE;
+  return dmg?.browser_download_url ?? GRAPHE_MAC_DOWNLOAD;
+}
+
+export function windowsDownloadUrl(assets: ReleaseAsset[]): string {
+  const exes = assets.filter(
+    asset =>
+      typeof asset?.name === "string" &&
+      typeof asset?.browser_download_url === "string" &&
+      asset.name.toLowerCase().endsWith(".exe"),
+  );
+  const exe =
+    exes.find(asset => asset.name === "graphe-windows-installer.exe") ??
+    exes[0];
+
+  return exe?.browser_download_url ?? GRAPHE_WINDOWS_DOWNLOAD;
 }

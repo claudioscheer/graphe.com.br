@@ -4,34 +4,54 @@ import { useEffect, useState, type ReactNode } from "react";
 import Link from "next/link";
 import {
   GRAPHE_LATEST_RELEASE_API,
+  GRAPHE_LINUX_APPIMAGE_DOWNLOAD,
+  GRAPHE_LINUX_DEB_DOWNLOAD,
+  GRAPHE_LINUX_TARGZ_DOWNLOAD,
+  GRAPHE_MAC_DOWNLOAD,
   GRAPHE_RELEASES_PAGE,
   GRAPHE_WINDOWS_DOWNLOAD,
   macDownloadUrl,
+  windowsDownloadUrl,
   type ReleaseAsset,
 } from "@/lib/graphe-release";
 
-let macDownloadPromise: Promise<string> | null = null;
+type DownloadsState = {
+  windows: string;
+  mac: string;
+};
 
-function loadMacDownload(): Promise<string> {
-  if (!macDownloadPromise) {
-    macDownloadPromise = fetch(GRAPHE_LATEST_RELEASE_API, {
+let downloadsPromise: Promise<DownloadsState> | null = null;
+
+function loadDownloads(): Promise<DownloadsState> {
+  if (!downloadsPromise) {
+    downloadsPromise = fetch(GRAPHE_LATEST_RELEASE_API, {
       headers: { Accept: "application/vnd.github+json" },
     })
       .then(async response => {
         if (!response.ok) {
-          macDownloadPromise = null;
-          return GRAPHE_RELEASES_PAGE;
+          downloadsPromise = null;
+          return {
+            windows: GRAPHE_WINDOWS_DOWNLOAD,
+            mac: GRAPHE_MAC_DOWNLOAD,
+          };
         }
         const body = (await response.json()) as { assets?: ReleaseAsset[] };
-        return macDownloadUrl(Array.isArray(body.assets) ? body.assets : []);
+        const assets = Array.isArray(body.assets) ? body.assets : [];
+        return {
+          windows: windowsDownloadUrl(assets),
+          mac: macDownloadUrl(assets),
+        };
       })
       .catch(() => {
-        macDownloadPromise = null;
-        return GRAPHE_RELEASES_PAGE;
+        downloadsPromise = null;
+        return {
+          windows: GRAPHE_WINDOWS_DOWNLOAD,
+          mac: GRAPHE_MAC_DOWNLOAD,
+        };
       });
   }
 
-  return macDownloadPromise;
+  return downloadsPromise;
 }
 
 function DownloadLink({
@@ -66,12 +86,15 @@ export function SoftwareDownloads({
   explain?: boolean;
   children?: ReactNode;
 }) {
-  const [macDownload, setMacDownload] = useState(GRAPHE_RELEASES_PAGE);
+  const [downloads, setDownloads] = useState<DownloadsState>({
+    windows: GRAPHE_WINDOWS_DOWNLOAD,
+    mac: GRAPHE_MAC_DOWNLOAD,
+  });
 
   useEffect(() => {
     let cancelled = false;
-    loadMacDownload().then(url => {
-      if (!cancelled) setMacDownload(url);
+    loadDownloads().then(urls => {
+      if (!cancelled) setDownloads(urls);
     });
     return () => {
       cancelled = true;
@@ -80,10 +103,10 @@ export function SoftwareDownloads({
 
   const links = (
     <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-      <DownloadLink href={GRAPHE_WINDOWS_DOWNLOAD} primary>
+      <DownloadLink href={downloads.windows} primary>
         Baixar para Windows
       </DownloadLink>
-      <DownloadLink href={macDownload} primary>
+      <DownloadLink href={downloads.mac} primary>
         Baixar para macOS
       </DownloadLink>
       <DownloadLink href={GRAPHE_RELEASES_PAGE}>
@@ -99,9 +122,35 @@ export function SoftwareDownloads({
     <div className="mb-12">
       {links}
       <p className="mt-4 text-sm leading-relaxed text-[#555555]">
-        Windows baixa o instalador (.msi) e macOS o disco universal (.dmg),
-        sempre da última versão no GitHub. No Linux, a release traz mais de um
-        pacote: escolha o seu.
+        Windows baixa o instalador (.exe) e macOS a imagem de disco (.dmg),
+        sempre da última versão no GitHub. No Linux, escolha entre{" "}
+        <Link
+          href={GRAPHE_LINUX_APPIMAGE_DOWNLOAD}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline hover:text-[#222222]"
+        >
+          AppImage
+        </Link>
+        {", "}
+        <Link
+          href={GRAPHE_LINUX_DEB_DOWNLOAD}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline hover:text-[#222222]"
+        >
+          .deb
+        </Link>{" "}
+        ou{" "}
+        <Link
+          href={GRAPHE_LINUX_TARGZ_DOWNLOAD}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline hover:text-[#222222]"
+        >
+          .tar.gz
+        </Link>
+        .
       </p>
     </div>
   );
