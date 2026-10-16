@@ -7,15 +7,17 @@ import { generatePageMetadata } from "@/lib/metadata";
 export const metadata = generatePageMetadata({
   title: "Sobre Graphe",
   description:
-    "Graphe vem da palavra grega γραφὴ (graphē), que significa Escrituras. Este blog foi criado para refletirmos juntos sobre a doutrina cristã e os ensinamentos bíblicos.",
+    "O Graphe é um programa simples para estudar a Bíblia. O nome vem do grego γραφὴ (graphē), Escrituras.",
   path: "/sobre",
 });
 
 const sobreContent = `# Sobre Graphe
 
-Graphe vem da palavra grega *γραφὴ* (graphē), que significa "Escrituras" ou "aquilo que foi escrito". Este termo é usado pelo apóstolo Paulo em 2 Timóteo 3:16, quando afirma que "toda Escritura é inspirada por Deus".
+Graphe vem da palavra grega *γραφὴ* (graphē), que significa "Escrituras" ou "aquilo que foi escrito". Paulo usa a palavra em 2 Timóteo 3:16, quando afirma que "toda Escritura é inspirada por Deus".
 
-**Vivendo as Escrituras** — este é o nosso propósito. Este blog foi criado para refletirmos juntos sobre a doutrina cristã e os ensinamentos bíblicos. Nosso desejo é compartilhar estudos, reflexões sobre a vida cristã e descobrir como aplicar a Palavra de Deus no nosso dia a dia.
+Esse também é o nome do programa. Ele é simples, para estudar a Bíblia no Windows, no Linux e no macOS. É de graça, e o código é aberto. Dá para comparar traduções, ver Strong e dicionário, ler comentários e trazer módulos de outros programas.
+
+**Vivendo as Escrituras** é o que a gente quer, no programa e nos textos deste site.
 
 Cremos no Deus Trino — Pai, Filho e Espírito Santo — revelado nas Escrituras. Cremos que a Bíblia é a Palavra de Deus, inerrante e suficiente para nos guiar em toda verdade. Por isso, buscamos tratar cada tema com reverência e fidelidade ao texto sagrado, crendo que somente as Escrituras são nossa regra de fé e prática.
 
@@ -42,12 +44,18 @@ export default function SobrePage() {
           />
         </div>
 
-        <div className="mt-8 flex justify-center">
+        <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Link
             href="/"
             className="border border-[#E5E5E5] px-8 py-4 text-[#222222] transition-colors hover:border-[#333333]"
           >
-            Ver artigos
+            Ver o programa
+          </Link>
+          <Link
+            href="/blog"
+            className="border border-[#E5E5E5] px-8 py-4 text-[#222222] transition-colors hover:border-[#333333]"
+          >
+            Ler o blog
           </Link>
         </div>
       </article>

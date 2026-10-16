@@ -38,7 +38,7 @@ export default function Author({ id }: AuthorProps) {
 
   return (
     <Layout>
-      <div className="mx-auto max-w-2xl">
+      <div>
         <header className="mb-12 border-b border-[#E5E5E5] pb-8">
           <h1 className="mb-4 text-4xl font-medium text-[#222222]">
             {authorPosts[0]?.author.name || "Autor"}
