@@ -59,10 +59,9 @@ const features = [
     title: "Módulos",
     body: (
       <>
-        Dá para instalar bíblias, dicionários e comentários. Se você usa
-        theWord ou MySword, dá para converter esses arquivos aqui. Também dá
-        para editar um módulo que já está instalado. Para ver os módulos
-        juntos, entra no{" "}
+        Dá para instalar bíblias, dicionários e comentários. Se você usa theWord
+        ou MySword, dá para converter esses arquivos aqui. Também dá para editar
+        um módulo que já está instalado. Para ver os módulos juntos, entra no{" "}
         <Link
           href={TELEGRAM_URL}
           target="_blank"
@@ -143,7 +142,7 @@ export default function Home() {
             );
             const shot = (
               <figure
-                className={`min-w-0 max-w-full overflow-hidden border border-[#E5E5E5] bg-[#fefdf9] ${
+                className={`max-w-full min-w-0 overflow-hidden border border-[#E5E5E5] bg-[#fefdf9] ${
                   flipped ? "max-md:order-2" : ""
                 } ${
                   feature.frame === "wide"
@@ -185,6 +184,42 @@ export default function Home() {
       </section>
 
       <section className="mt-8 border-t border-[#E5E5E5] pt-12">
+        <p className="mb-3 text-sm tracking-wide text-[#888888] uppercase">
+          No celular
+        </p>
+        <div className="grid items-center gap-8 md:grid-cols-[1fr_220px]">
+          <div>
+            <h2 className="mb-3 text-2xl font-medium text-[#222222]">
+              Graphe Play
+            </h2>
+            <p className="mb-6 max-w-xl leading-relaxed text-[#555555]">
+              Também tem um aplicativo para estudar a Bíblia no celular, com
+              flashcards, quiz e memorização de versículos. Funciona sem
+              internet.
+            </p>
+            <Link
+              href="/play"
+              className="inline-flex items-center justify-center bg-[#222222] px-8 py-4 text-sm text-white transition-colors hover:bg-[#333333]"
+            >
+              Ver o Graphe Play
+            </Link>
+          </div>
+          <figure className="mx-auto w-full max-w-[220px] overflow-hidden rounded-[24px] border border-[#E5E5E5] bg-[#10182C]">
+            <video
+              src="/play/app.mp4"
+              poster="/play/inicio.png"
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="h-auto w-full"
+              aria-label="O Graphe Play em uso no celular"
+            />
+          </figure>
+        </div>
+      </section>
+
+      <section className="mt-16 border-t border-[#E5E5E5] pt-12">
         <p className="mb-3 text-sm tracking-wide text-[#888888] uppercase">
           Blog
         </p>

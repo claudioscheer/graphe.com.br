@@ -19,9 +19,19 @@ export default function Layout({ children }: LayoutProps) {
       <footer className="mt-20 border-t border-[#E5E5E5]">
         <div className={`mx-auto px-6 py-8 ${measure}`}>
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
-            <p className="text-sm text-[#555555]">
-              © {new Date().getFullYear()} Graphe. Todos os direitos reservados.
-            </p>
+            <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm text-[#555555]">
+              <span>
+                © {new Date().getFullYear()} Graphe. Todos os direitos
+                reservados.
+              </span>
+              <span>·</span>
+              <Link
+                href="/privacidade"
+                className="transition-colors hover:text-[#222222]"
+              >
+                Privacidade
+              </Link>
+            </div>
             <div className="flex items-center gap-4">
               <Link
                 href="https://github.com/claudioscheer/graphe"

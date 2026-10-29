@@ -1,7 +1,18 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+
+const links = [
+  { href: "/blog", label: "Blog" },
+  { href: "/play", label: "Play" },
+  { href: "/sobre", label: "Sobre" },
+];
 
 export default function Navbar() {
+  const pathname = usePathname();
+
   return (
     <nav className="border-b border-[#E5E5E5]">
       <div className="mx-auto flex max-w-3xl items-center px-6 py-4">
@@ -26,18 +37,24 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-6">
-          <Link
-            href="/blog"
-            className="text-sm font-medium text-[#222222] hover:underline"
-          >
-            Blog
-          </Link>
-          <Link
-            href="/sobre"
-            className="text-sm text-[#555555] hover:underline"
-          >
-            Sobre
-          </Link>
+          {links.map(link => {
+            const selected =
+              pathname === link.href || pathname.startsWith(`${link.href}/`);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={selected ? "page" : undefined}
+                className={
+                  selected
+                    ? "text-sm font-medium text-[#222222] hover:underline"
+                    : "text-sm font-normal text-[#555555] hover:underline"
+                }
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </div>
       </div>
     </nav>

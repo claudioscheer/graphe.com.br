@@ -9,3 +9,11 @@ O [Graphe](https://github.com/claudioscheer/graphe) é nosso aplicativo desktop 
 - Página no site: [graphe.com.br/software-biblico](https://graphe.com.br/software-biblico)
 - Código e releases: [github.com/claudioscheer/graphe](https://github.com/claudioscheer/graphe) · [última versão](https://github.com/claudioscheer/graphe/releases/latest)
 - Módulos e comunidade: [Telegram](https://t.me/graphebiblesoftware)
+
+### Graphe Play
+
+App para estudar a Bíblia com flashcards, quiz e memorização de versículos.
+
+- Página no site: [graphe.com.br/play](https://graphe.com.br/play)
+- Dúvidas: [Telegram](https://t.me/graphebiblesoftware)
+- Google Play: em breve
