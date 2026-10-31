@@ -120,7 +120,7 @@ export function ZoomImage({
           role="dialog"
           aria-modal="true"
           aria-label={alt}
-          className={`fixed inset-0 z-50 flex cursor-zoom-out items-center justify-center bg-[#222222]/90 transition-opacity duration-200 ease-out ${
+          className={`bg-ink/95 fixed inset-0 z-50 flex cursor-zoom-out items-center justify-center transition-opacity duration-200 ease-out ${
             shown ? "opacity-100" : "opacity-0"
           }`}
           onClick={closeImage}

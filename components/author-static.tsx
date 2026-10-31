@@ -33,11 +33,9 @@ export default function AuthorStatic({
   if (authorPosts.length === 0) {
     return (
       <Layout>
-        <div className="py-20 text-center">
-          <h1 className="mb-4 text-2xl font-medium text-[#222222]">
-            Autor não encontrado
-          </h1>
-          <Link href="/" className="text-[#2E6BE6] hover:underline">
+        <div className="border-line-strong max-w-2xl border-t pt-10">
+          <h1 className="page-title text-ink">Autor não encontrado</h1>
+          <Link href="/" className="text-link mt-6 inline-block">
             Voltar para a página inicial
           </Link>
         </div>
@@ -47,40 +45,33 @@ export default function AuthorStatic({
 
   return (
     <Layout>
-      <div>
-        <header className="mb-12 border-b border-[#E5E5E5] pb-8">
-          <h1 className="mb-4 text-4xl font-medium text-[#222222]">
-            {authorName}
-          </h1>
-          {authorBio && (
-            <div className="leading-relaxed text-[#555555]">
-              <MarkdownRenderer content={authorBio} />
-            </div>
-          )}
-        </header>
-
-        <section>
-          <h2 className="mb-6 text-2xl font-medium text-[#222222]">
-            Artigos publicados
-          </h2>
-
-          <div className="space-y-6">
-            {authorPosts.map((post: Post) => (
-              <PostListItem
-                key={post.id}
-                post={{
-                  id: post.id,
-                  title: post.title,
-                  subtitle: post.subtitle,
-                  date: post.date,
-                  authorId: post.author.id,
-                  authorName: post.author.name,
-                }}
-              />
-            ))}
+      <header className="border-line-strong max-w-[900px] border-b pb-10">
+        <h1 className="page-title text-ink">{authorName}</h1>
+        {authorBio && (
+          <div className="mt-6 max-w-[70ch]">
+            <MarkdownRenderer content={authorBio} />
           </div>
-        </section>
-      </div>
+        )}
+      </header>
+
+      <section className="mt-12">
+        <h2 className="meta text-ink">Artigos publicados</h2>
+        <div className="mt-2">
+          {authorPosts.map((post: Post) => (
+            <PostListItem
+              key={post.id}
+              post={{
+                id: post.id,
+                title: post.title,
+                subtitle: post.subtitle,
+                date: post.date,
+                authorId: post.author.id,
+                authorName: post.author.name,
+              }}
+            />
+          ))}
+        </div>
+      </section>
     </Layout>
   );
 }

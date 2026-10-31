@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import Layout from "./layout";
 import PostListItem from "./post-list-item";
 import { SoftwareDownloads } from "./software-downloads";
@@ -66,7 +67,7 @@ const features = [
           href={TELEGRAM_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[#222222] underline"
+          className="text-link"
         >
           grupo do Telegram
         </Link>
@@ -93,21 +94,31 @@ export default function Home() {
 
   return (
     <Layout>
-      <header className="max-w-2xl">
-        <h1 className="mb-4 max-w-full text-3xl font-medium tracking-tight text-[#222222] sm:text-5xl">
-          Graphe
-        </h1>
-        <p className="text-xl leading-relaxed text-[#555555]">
-          Um programa simples para estudar a Bíblia no computador. Funciona no
-          Windows, no Linux e no macOS. É de graça, e o código é aberto.
-        </p>
+      <header>
+        <div className="grid gap-10 pt-10 lg:pt-14 xl:grid-cols-12 xl:gap-12">
+          <div className="xl:col-span-7">
+            <h1 className="display text-ink">Graphe</h1>
+            <p className="text-ink-soft mt-5 font-serif text-2xl font-medium tracking-[-0.02em] sm:text-3xl">
+              Vivendo as Escrituras.
+            </p>
+          </div>
+
+          <div className="xl:col-span-5 xl:pb-2">
+            <p className="lede max-w-[42ch]">
+              Um programa simples para estudar a Bíblia no computador. Funciona
+              no Windows, no Linux e no macOS. É de graça, e o código é aberto.
+            </p>
+            <div id="baixar" className="mt-8 scroll-mt-28">
+              <SoftwareDownloads />
+            </div>
+            <p className="meta mt-5 text-[10px]">
+              Grátis · Código aberto · Sem conta
+            </p>
+          </div>
+        </div>
       </header>
 
-      <div className="mt-8">
-        <SoftwareDownloads />
-      </div>
-
-      <figure className="mt-10 overflow-hidden border border-[#E5E5E5] bg-white">
+      <figure className="frame image-shadow mt-12 lg:mt-16">
         <ZoomImage
           src="/home/app.jpg"
           alt="Graphe com Marcos 3 em duas traduções, o dicionário de Strong e o comentário aberto"
@@ -117,37 +128,42 @@ export default function Home() {
           className="h-auto w-full max-w-full"
         />
       </figure>
-      <p className="mt-3 text-sm text-[#888888]">
+      <p className="text-ink-soft mt-3 text-sm leading-[1.5]">
         A tela do programa, com a Bíblia, o dicionário e um comentário abertos.
       </p>
 
-      <section className="mt-16">
-        <h2 className="mb-2 text-2xl font-medium text-[#222222]">
-          O que dá para fazer
-        </h2>
-        <p className="max-w-2xl text-[#555555]">
-          Coisas simples, para o estudo de todo dia.
-        </p>
+      <section className="border-line-strong mt-20 border-t pt-12">
+        <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
+          <h2 className="section-title lg:col-span-7">O que dá para fazer</h2>
+          <p className="lede max-w-md lg:col-span-5">
+            Coisas simples, para o estudo de todo dia.
+          </p>
+        </div>
 
-        <div className="mt-8">
+        <div className="mt-10">
           {features.map((feature, index) => {
             const flipped = index % 2 === 1;
             const text = (
-              <div className={flipped ? "max-md:order-1" : undefined}>
-                <h3 className="mb-2 text-xl font-medium text-[#222222]">
-                  {feature.title}
-                </h3>
-                <p className="leading-relaxed text-[#555555]">{feature.body}</p>
+              <div className={`md:col-span-5 ${flipped ? "md:order-2" : ""}`}>
+                <div className="flex items-baseline gap-4">
+                  <span className="text-brass font-serif text-3xl font-medium tracking-[-0.03em]">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="item-title">{feature.title}</h3>
+                </div>
+                <div className="lede mt-4 max-w-[46ch]">{feature.body}</div>
               </div>
             );
             const shot = (
               <figure
-                className={`max-w-full min-w-0 overflow-hidden border border-[#E5E5E5] bg-[#fefdf9] ${
-                  flipped ? "max-md:order-2" : ""
+                className={`frame image-shadow md:col-span-7 ${
+                  flipped ? "md:order-1" : ""
                 } ${
                   feature.frame === "wide"
                     ? "w-full"
-                    : `w-fit max-w-full ${flipped ? "md:justify-self-end" : "md:justify-self-start"}`
+                    : `w-full max-w-[340px] ${
+                        flipped ? "md:mr-0 md:ml-auto" : "md:mr-auto md:ml-0"
+                      }`
                 }`}
               >
                 <ZoomImage
@@ -155,13 +171,7 @@ export default function Home() {
                   alt={feature.alt}
                   width={feature.width}
                   height={feature.height}
-                  className={
-                    feature.frame === "panel"
-                      ? "h-[520px] w-full max-w-[350px] object-cover object-top"
-                      : feature.frame === "short"
-                        ? "h-auto w-full max-w-[350px]"
-                        : "h-auto w-full max-w-full"
-                  }
+                  className="h-auto w-full"
                 />
               </figure>
             );
@@ -169,11 +179,7 @@ export default function Home() {
             return (
               <article
                 key={feature.title}
-                className={`grid min-w-0 items-center gap-8 border-t border-[#E5E5E5] py-10 ${
-                  flipped
-                    ? "md:grid-cols-[1fr_minmax(240px,340px)]"
-                    : "md:grid-cols-[minmax(240px,340px)_1fr]"
-                }`}
+                className="border-line grid min-w-0 gap-8 border-t py-12 md:grid-cols-12 md:items-center md:gap-12"
               >
                 {flipped ? shot : text}
                 {flipped ? text : shot}
@@ -183,51 +189,53 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mt-8 border-t border-[#E5E5E5] pt-12">
-        <p className="mb-3 text-sm tracking-wide text-[#888888] uppercase">
-          No celular
-        </p>
-        <div className="grid items-center gap-8 md:grid-cols-[1fr_220px]">
-          <div>
-            <h2 className="mb-3 text-2xl font-medium text-[#222222]">
-              Graphe Play
-            </h2>
-            <p className="mb-6 max-w-xl leading-relaxed text-[#555555]">
-              Também tem um aplicativo para estudar a Bíblia no celular, com
-              flashcards, quiz e memorização de versículos. Funciona sem
-              internet.
-            </p>
-            <Link
-              href="/play"
-              className="inline-flex items-center justify-center bg-[#222222] px-8 py-4 text-sm text-white transition-colors hover:bg-[#333333]"
-            >
+      <section className="border-line-strong mt-20 grid gap-10 border-t pt-12 lg:grid-cols-12 lg:items-center lg:gap-12">
+        <div className="lg:col-span-7">
+          <p className="meta text-brass">No celular</p>
+          <h2 className="section-title mt-3">Graphe Play</h2>
+          <p className="lede mt-5 max-w-xl">
+            Também tem um aplicativo para estudar a Bíblia no celular, com
+            flashcards, quiz e memorização de versículos. É grátis, sem anúncios
+            e funciona sem internet.
+          </p>
+          <div className="mt-8">
+            <Link href="/play" className="btn btn-primary">
               Ver o Graphe Play
+              <ArrowUpRight size={15} aria-hidden="true" />
             </Link>
           </div>
-          <figure className="mx-auto w-full max-w-[220px] overflow-hidden rounded-[24px] border border-[#E5E5E5] bg-[#10182C]">
-            <video
-              src="/play/app.mp4"
-              poster="/play/inicio.png"
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="h-auto w-full"
-              aria-label="O Graphe Play em uso no celular"
-            />
-          </figure>
         </div>
+        <figure className="phone-frame mx-auto w-full max-w-[260px] lg:col-span-5">
+          <video
+            src="/play/app.mp4"
+            poster="/play/inicio.png"
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="h-auto w-full"
+            aria-label="O Graphe Play em uso no celular"
+          />
+        </figure>
       </section>
 
-      <section className="mt-16 border-t border-[#E5E5E5] pt-12">
-        <p className="mb-3 text-sm tracking-wide text-[#888888] uppercase">
-          Blog
-        </p>
-        <h2 className="mb-2 text-2xl font-medium text-[#222222]">Estudos</h2>
-        <p className="mb-8 max-w-2xl text-[#555555]">
-          Também tem alguns textos aqui no site.
-        </p>
-        <div className="grid gap-6 md:grid-cols-2">
+      <section className="border-line-strong mt-20 border-t pt-12">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <div>
+            <h2 className="section-title">Blog</h2>
+            <p className="lede mt-4 max-w-2xl">
+              Também tem alguns textos aqui no site.
+            </p>
+          </div>
+          <Link
+            href="/blog"
+            className="meta text-ink hover:text-brass inline-flex items-center gap-2 transition-colors"
+          >
+            Todos os textos
+            <ArrowUpRight size={14} aria-hidden="true" />
+          </Link>
+        </div>
+        <div className="mt-8">
           {posts.map(post => (
             <PostListItem key={post.id} post={post} />
           ))}

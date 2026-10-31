@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import Layout from "./layout";
 import MarkdownRenderer from "./markdown-renderer";
 
@@ -22,26 +23,38 @@ export default function PostStatic({
   return (
     <Layout>
       <article>
-        <header className="mb-12 border-b border-[#E5E5E5] pb-8">
-          <h1 className="mb-4 text-4xl font-medium text-[#222222]">{title}</h1>
+        <div className="mb-8">
+          <Link
+            href="/blog"
+            className="meta text-ink-soft hover:text-ink inline-flex items-center gap-2 transition-colors"
+          >
+            <ArrowLeft size={14} aria-hidden="true" />
+            Blog
+          </Link>
+        </div>
 
-          {subtitle && (
-            <p className="mb-4 text-xl text-[#555555]">{subtitle}</p>
-          )}
-
-          <div className="flex items-center gap-4 text-sm text-[#555555]">
+        <header className="border-line-strong max-w-[900px] border-b pb-8">
+          <div className="text-ink-soft flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.75rem] font-medium tracking-[0.02em]">
             <time>{date}</time>
-            <span>·</span>
+            <span aria-hidden="true">·</span>
             <Link
               href={`/autor/${authorId}`}
-              className="text-[#555555] hover:underline"
+              className="hover:text-ink transition-colors"
             >
               {authorName}
             </Link>
           </div>
+
+          <h1 className="page-title text-ink mt-4">{title}</h1>
+
+          {subtitle && (
+            <p className="lede mt-5 max-w-2xl text-xl">{subtitle}</p>
+          )}
         </header>
 
-        <MarkdownRenderer content={content} />
+        <div className="mt-10">
+          <MarkdownRenderer content={content} />
+        </div>
       </article>
     </Layout>
   );

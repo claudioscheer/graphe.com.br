@@ -14,13 +14,16 @@ export default function SoftwarePage() {
   return (
     <Layout>
       <RedirectHome />
-      <p className="text-[#555555]">
-        O software está na{" "}
-        <Link href="/" className="text-[#222222] underline">
-          página inicial
-        </Link>
-        .
-      </p>
+      <div className="border-line-strong max-w-2xl border-t pt-10">
+        <h1 className="page-title text-ink">Software de estudo bíblico</h1>
+        <p className="lede mt-5">
+          O software está na{" "}
+          <Link href="/" className="text-link">
+            página inicial
+          </Link>
+          .
+        </p>
+      </div>
     </Layout>
   );
 }

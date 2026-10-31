@@ -8,57 +8,52 @@ interface LayoutProps {
 }
 
 export default function Layout({ children }: LayoutProps) {
-  const measure = "max-w-3xl";
-
   return (
-    <div className="min-h-screen bg-[#F7F2EC]">
+    <div className="bg-paper min-h-screen">
       <Navbar />
-      <main className={`mx-auto min-w-0 overflow-x-clip px-6 py-12 ${measure}`}>
+      <main className="mx-auto w-full max-w-[1240px] px-6 py-12 lg:px-10 lg:py-16">
         {children}
       </main>
-      <footer className="mt-20 border-t border-[#E5E5E5]">
-        <div className={`mx-auto px-6 py-8 ${measure}`}>
-          <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
-            <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm text-[#555555]">
-              <span>
-                © {new Date().getFullYear()} Graphe. Todos os direitos
-                reservados.
-              </span>
-              <span>·</span>
+      <footer className="border-line border-t">
+        <div className="mx-auto max-w-[1240px] px-6 py-8 lg:px-10">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+            <div className="meta flex flex-wrap items-center gap-x-3 gap-y-1">
+              <span>© {new Date().getFullYear()} Graphe</span>
+              <span aria-hidden="true">·</span>
               <Link
                 href="/privacidade"
-                className="transition-colors hover:text-[#222222]"
+                className="hover:text-ink transition-colors"
               >
                 Privacidade
               </Link>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="meta flex flex-wrap items-center gap-x-5 gap-y-3">
               <Link
                 href="https://github.com/claudioscheer/graphe"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm text-[#555555] transition-colors hover:text-[#222222]"
+                className="hover:text-ink inline-flex items-center gap-2 transition-colors"
               >
-                <Github size={18} />
-                <span>GitHub</span>
+                <Github size={15} aria-hidden="true" />
+                GitHub
               </Link>
               <Link
                 href="https://www.instagram.com/graphebr"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm text-[#555555] transition-colors hover:text-[#222222]"
+                className="hover:text-ink inline-flex items-center gap-2 transition-colors"
               >
-                <Instagram size={18} />
-                <span>Instagram</span>
+                <Instagram size={15} aria-hidden="true" />
+                Instagram
               </Link>
               <Link
                 href="https://www.youtube.com/@grapheio"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm text-[#555555] transition-colors hover:text-[#222222]"
+                className="hover:text-ink inline-flex items-center gap-2 transition-colors"
               >
-                <Youtube size={18} />
-                <span>YouTube</span>
+                <Youtube size={15} aria-hidden="true" />
+                YouTube
               </Link>
             </div>
           </div>

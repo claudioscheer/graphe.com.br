@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { PLAY_STORE_URL } from "@/lib/links";
 
 const links = [
   { href: "/blog", label: "Blog" },
@@ -12,31 +13,25 @@ const links = [
 
 export default function Navbar() {
   const pathname = usePathname();
+  const onPlayPage = pathname === "/play" || pathname.startsWith("/play/");
+  const downloadHref = onPlayPage ? PLAY_STORE_URL : "/#baixar";
 
   return (
-    <nav className="border-b border-[#E5E5E5]">
-      <div className="mx-auto flex max-w-3xl items-center px-6 py-4">
-        <div className="mr-8 flex items-center gap-3">
-          <div className="flex h-16 w-16 items-center justify-center overflow-hidden">
-            <Image
-              src="/graphe.png"
-              alt="Graphe"
-              width={72}
-              height={72}
-              className="object-contain"
-            />
-          </div>
-          <Link href="/" className="group flex flex-col">
-            <span className="text-xl font-medium text-[#222222] group-hover:underline">
-              Graphe
-            </span>
-            <span className="hidden text-xs text-[#888888] sm:block">
-              Vivendo as Escrituras
-            </span>
-          </Link>
-        </div>
+    <header className="border-line bg-paper sticky top-0 z-40 border-b">
+      <div className="mx-auto flex max-w-[1240px] items-center justify-between gap-5 px-6 py-3.5 lg:px-10">
+        <Link href="/" className="flex min-w-0 flex-col">
+          <span className="text-ink font-serif text-[1.6rem] leading-none font-semibold tracking-[-0.02em]">
+            Graphe
+          </span>
+          <span className="meta text-ink-soft mt-1 hidden text-[9px] tracking-[0.18em] sm:block">
+            Vivendo as Escrituras
+          </span>
+        </Link>
 
-        <div className="flex items-center gap-6">
+        <nav
+          className="flex items-center gap-5 sm:gap-7"
+          aria-label="Principal"
+        >
           {links.map(link => {
             const selected =
               pathname === link.href || pathname.startsWith(`${link.href}/`);
@@ -45,18 +40,31 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 aria-current={selected ? "page" : undefined}
-                className={
+                className={`meta border-b pb-0.5 transition-colors ${
                   selected
-                    ? "text-sm font-medium text-[#222222] hover:underline"
-                    : "text-sm font-normal text-[#555555] hover:underline"
-                }
+                    ? "border-brass text-ink"
+                    : "text-ink-soft hover:border-line-strong hover:text-ink border-transparent"
+                }`}
               >
                 {link.label}
               </Link>
             );
           })}
-        </div>
+          <Link
+            href={downloadHref}
+            target={onPlayPage ? "_blank" : undefined}
+            rel={onPlayPage ? "noopener noreferrer" : undefined}
+            className="btn btn-secondary hidden px-4 py-2 text-xs sm:inline-flex"
+          >
+            {onPlayPage ? "Baixar o app" : "Baixar"}
+            {onPlayPage ? (
+              <ArrowUpRight size={14} aria-hidden="true" />
+            ) : (
+              <ArrowDown size={14} aria-hidden="true" />
+            )}
+          </Link>
+        </nav>
       </div>
-    </nav>
+    </header>
   );
 }

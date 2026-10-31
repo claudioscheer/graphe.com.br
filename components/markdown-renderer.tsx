@@ -7,14 +7,12 @@ interface MarkdownRendererProps {
 
 export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
   return (
-    <div className="prose-custom">
+    <div>
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
           h1: ({ children }) => (
-            <h1 className="mt-8 mb-6 text-3xl font-medium text-[#222222]">
-              {children}
-            </h1>
+            <h1 className="page-title text-ink mt-0 mb-8">{children}</h1>
           ),
           h2: ({ children, ...props }) => {
             // Hide the "Footnotes" heading that remark-gfm generates (has class="sr-only" and id="footnote-label")
@@ -35,18 +33,18 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
               return null;
             }
             return (
-              <h2 className="mt-8 mb-4 text-2xl font-medium text-[#222222]">
+              <h2 className="text-ink mt-14 mb-5 font-serif text-[clamp(1.75rem,3.2vw,2.5rem)] leading-tight font-semibold tracking-[-0.025em]">
                 {children}
               </h2>
             );
           },
           h3: ({ children }) => (
-            <h3 className="mt-6 mb-3 text-xl font-medium text-[#222222]">
+            <h3 className="text-ink mt-10 mb-4 font-serif text-2xl leading-tight font-semibold tracking-[-0.02em]">
               {children}
             </h3>
           ),
           p: ({ children }) => (
-            <p className="mb-4 leading-relaxed text-[#222222]">{children}</p>
+            <p className="body-large text-ink mb-6 max-w-[70ch]">{children}</p>
           ),
           a: ({ href, children, ...props }) => {
             // Check if this is an internal anchor link (for footnotes)
@@ -62,8 +60,8 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
                   href={href}
                   className={
                     isFootnoteBackref
-                      ? "ml-1 text-[#2E6BE6] no-underline"
-                      : "text-[#2E6BE6] hover:underline"
+                      ? "text-brass ml-1 no-underline"
+                      : "text-link"
                   }
                 >
                   {children}
@@ -73,7 +71,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             return (
               <a
                 href={href}
-                className="text-[#2E6BE6] hover:underline"
+                className="text-link"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -82,7 +80,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
             );
           },
           ul: ({ children }) => (
-            <ul className="mb-4 list-inside list-disc space-y-2 text-[#222222]">
+            <ul className="body-large text-ink mb-6 max-w-[70ch] list-disc space-y-2 pl-6">
               {children}
             </ul>
           ),
@@ -111,13 +109,13 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
 
             if (isFootnoteList) {
               return (
-                <ol className="mt-4 list-inside list-decimal space-y-2 pl-0 text-sm text-[#555555]">
+                <ol className="text-ink-soft mt-4 max-w-[70ch] list-decimal space-y-2 pl-6 text-sm leading-relaxed">
                   {children}
                 </ol>
               );
             }
             return (
-              <ol className="mb-6 list-inside list-decimal space-y-2 text-[#222222]">
+              <ol className="body-large text-ink mb-6 max-w-[70ch] list-decimal space-y-2 pl-6">
                 {children}
               </ol>
             );
@@ -131,24 +129,22 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
               return (
                 <li
                   id={id}
-                  className="mb-2 leading-relaxed text-[#555555] [&>p]:mb-0 [&>p]:inline"
+                  className="text-ink-soft mb-2 leading-relaxed [&>p]:mb-0 [&>p]:inline"
                 >
                   {children}
                 </li>
               );
             }
-            return (
-              <li className="leading-relaxed text-[#222222]">{children}</li>
-            );
+            return <li className="text-ink leading-relaxed">{children}</li>;
           },
           blockquote: ({ children }) => (
-            <blockquote className="my-6 border-l-2 border-[#E5E5E5] pl-6 text-[#555555] italic">
+            <blockquote className="border-line-strong text-ink my-10 max-w-[70ch] border-l pl-6 font-serif text-[1.375rem] leading-snug italic">
               {children}
             </blockquote>
           ),
-          hr: () => <hr className="my-8 border-[#E5E5E5]" />,
+          hr: () => <hr className="border-line my-12 max-w-[70ch]" />,
           code: ({ children }) => (
-            <code className="bg-[#F5F5F5] px-2 py-1 text-sm text-[#222222]">
+            <code className="bg-ink/[0.06] text-ink px-1.5 py-0.5 font-mono text-[0.9em]">
               {children}
             </code>
           ),
@@ -163,10 +159,8 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
               propsObj.className?.includes("footnotes");
             if (isFootnoteSection) {
               return (
-                <section className="mt-12 border-t border-[#E5E5E5] pt-8">
-                  <h2 className="mb-4 text-lg font-medium text-[#222222]">
-                    Referências
-                  </h2>
+                <section className="border-line mt-16 max-w-[70ch] border-t pt-8">
+                  <h2 className="meta text-ink mb-5">Referências</h2>
                   {children}
                 </section>
               );
@@ -175,7 +169,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
           },
           // Footnote reference styling (superscript numbers in text)
           sup: ({ children }) => (
-            <sup className="text-xs text-[#2E6BE6]">{children}</sup>
+            <sup className="text-brass text-xs">{children}</sup>
           ),
         }}
       >

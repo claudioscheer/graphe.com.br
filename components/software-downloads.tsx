@@ -2,6 +2,7 @@
 
 import { useEffect, useState, type ReactNode } from "react";
 import Link from "next/link";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 import {
   GRAPHE_LATEST_RELEASE_API,
   GRAPHE_LINUX_APPIMAGE_DOWNLOAD,
@@ -68,13 +69,14 @@ function DownloadLink({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={
-        primary
-          ? "inline-flex items-center justify-center bg-[#222222] px-8 py-4 text-sm text-white transition-colors hover:bg-[#333333]"
-          : "inline-flex items-center justify-center border border-[#E5E5E5] px-8 py-4 text-sm text-[#222222] transition-colors hover:border-[#333333]"
-      }
+      className={`btn ${primary ? "btn-primary" : "btn-secondary"}`}
     >
       {children}
+      {primary ? (
+        <ArrowDown size={15} aria-hidden="true" />
+      ) : (
+        <ArrowUpRight size={15} aria-hidden="true" />
+      )}
     </Link>
   );
 }
@@ -121,14 +123,14 @@ export function SoftwareDownloads({
   return (
     <div className="mb-12">
       {links}
-      <p className="mt-4 text-sm leading-relaxed text-[#555555]">
+      <p className="text-ink-soft mt-4 max-w-2xl text-[0.9375rem] leading-relaxed">
         Windows baixa o instalador (.exe) e macOS a imagem de disco (.dmg),
         sempre da última versão no GitHub. No Linux, escolha entre{" "}
         <Link
           href={GRAPHE_LINUX_APPIMAGE_DOWNLOAD}
           target="_blank"
           rel="noopener noreferrer"
-          className="underline hover:text-[#222222]"
+          className="text-link"
         >
           AppImage
         </Link>
@@ -137,7 +139,7 @@ export function SoftwareDownloads({
           href={GRAPHE_LINUX_DEB_DOWNLOAD}
           target="_blank"
           rel="noopener noreferrer"
-          className="underline hover:text-[#222222]"
+          className="text-link"
         >
           .deb
         </Link>{" "}
@@ -146,7 +148,7 @@ export function SoftwareDownloads({
           href={GRAPHE_LINUX_TARGZ_DOWNLOAD}
           target="_blank"
           rel="noopener noreferrer"
-          className="underline hover:text-[#222222]"
+          className="text-link"
         >
           .tar.gz
         </Link>

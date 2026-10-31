@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import Layout from "./layout";
 import MarkdownRenderer from "./markdown-renderer";
 import { posts } from "@/lib/data";
@@ -27,11 +28,9 @@ export default function Post({ id }: PostProps) {
   if (!postMetadata || !postContent) {
     return (
       <Layout>
-        <div className="py-20 text-center">
-          <h1 className="mb-4 text-2xl font-medium text-[#222222]">
-            Post não encontrado
-          </h1>
-          <Link href="/" className="text-[#2E6BE6] hover:underline">
+        <div className="border-line-strong max-w-2xl border-t pt-10">
+          <h1 className="page-title text-ink">Post não encontrado</h1>
+          <Link href="/" className="text-link mt-6 inline-block">
             Voltar para a página inicial
           </Link>
         </div>
@@ -42,24 +41,40 @@ export default function Post({ id }: PostProps) {
   return (
     <Layout>
       <article>
-        <header className="mb-12 border-b border-[#E5E5E5] pb-8">
-          <h1 className="mb-4 text-4xl font-medium text-[#222222]">
-            {postMetadata.title}
-          </h1>
+        <div className="mb-8">
+          <Link
+            href="/blog"
+            className="meta text-ink-soft hover:text-ink inline-flex items-center gap-2 transition-colors"
+          >
+            <ArrowLeft size={14} aria-hidden="true" />
+            Blog
+          </Link>
+        </div>
 
-          <div className="flex items-center gap-4 text-sm text-[#555555]">
+        <header className="border-line-strong max-w-[900px] border-b pb-8">
+          <div className="text-ink-soft flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.75rem] font-medium tracking-[0.02em]">
             <time>{postMetadata.date}</time>
-            <span>·</span>
+            <span aria-hidden="true">·</span>
             <Link
               href={`/autor/${postMetadata.author.id}`}
-              className="text-[#555555] hover:underline"
+              className="hover:text-ink transition-colors"
             >
               {postMetadata.author.name}
             </Link>
           </div>
+
+          <h1 className="page-title text-ink mt-4">{postMetadata.title}</h1>
+
+          {postMetadata.subtitle && (
+            <p className="lede mt-5 max-w-2xl text-xl">
+              {postMetadata.subtitle}
+            </p>
+          )}
         </header>
 
-        <MarkdownRenderer content={postContent.content} />
+        <div className="mt-10">
+          <MarkdownRenderer content={postContent.content} />
+        </div>
       </article>
     </Layout>
   );

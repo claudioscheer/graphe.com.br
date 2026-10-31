@@ -5,8 +5,7 @@ import { generatePageMetadata } from "@/lib/metadata";
 
 export const metadata = generatePageMetadata({
   title: "Blog",
-  description:
-    "Alguns textos sobre as Escrituras.",
+  description: "Alguns textos sobre as Escrituras.",
   path: "/blog",
 });
 
@@ -33,13 +32,13 @@ export default function BlogPage() {
 
   return (
     <Layout>
-      <header className="mb-10 border-b border-[#E5E5E5] pb-8">
-        <h1 className="mb-4 text-4xl font-medium text-[#222222]">Blog</h1>
-        <p className="text-xl leading-relaxed text-[#555555]">
+      <header className="border-line-strong border-b pb-8">
+        <h1 className="page-title text-ink">Blog</h1>
+        <p className="lede mt-5 max-w-2xl">
           Alguns textos sobre as Escrituras.
         </p>
       </header>
-      <div className="space-y-6">
+      <div className="mt-2">
         {posts.map(post => (
           <PostListItem key={post.id} post={post} />
         ))}

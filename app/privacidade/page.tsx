@@ -76,7 +76,7 @@ Se você tiver dúvidas sobre esta política de privacidade ou sobre o funcionam
 export default function PrivacyPage() {
   return (
     <Layout>
-      <article className="prose prose-lg max-w-none">
+      <article className="max-w-[900px]">
         <MarkdownRenderer content={privacyContent} />
       </article>
     </Layout>
